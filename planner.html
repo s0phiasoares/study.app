@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Planner | Study Path</title>
+
+    <link rel="stylesheet" href="planner.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            🚀 <span>Study<span>Path</span></span>
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                🏠
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#">
+                🎯
+                <span>My Goals</span>
+            </a>
+
+            <a href="study.html">
+                📚
+                <span>Study</span>
+            </a>
+
+            <a href="planner.html" class="active">
+                📅
+                <span>Planner</span>
+            </a>
+
+            <a href="#">
+                🗺️
+                <span>My Path</span>
+            </a>
+
+            <a href="#">
+                📊
+                <span>Progress</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button id="logoutButton">
+                🚪 Log out
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- TOP -->
+
+        <header class="topbar">
+
+            <div>
+
+                <small>STUDY PATH</small>
+
+                <h1>My Planner 📅</h1>
+
+            </div>
+
+            <div class="profile-mini">
+
+                <div class="avatar" id="avatar">
+                    SP
+                </div>
+
+                <div>
+
+                    <strong id="userName">
+                        Student
+                    </strong>
+
+                    <small>
+                        Future Builder 🚀
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- INTRO -->
+
+        <section class="planner-header">
+
+            <div>
+
+                <span>PLAN YOUR FUTURE</span>
+
+                <h2>
+                    Turn your goals into
+                    <strong>daily actions.</strong>
+                </h2>
+
+                <p>
+                    Organize your study sessions,
+                    manage priorities and keep moving forward.
+                </p>
+
+            </div>
+
+            <div class="calendar-icon">
+                📅
+            </div>
+
+        </section>
+
+
+        <!-- STATS -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📅
+                </div>
+
+                <div>
+
+                    <small>Total Plans</small>
+
+                    <strong id="totalPlans">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ⏳
+                </div>
+
+                <div>
+
+                    <small>Pending</small>
+
+                    <strong id="pendingPlans">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ✅
+                </div>
+
+                <div>
+
+                    <small>Completed</small>
+
+                    <strong id="completedPlans">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔥
+                </div>
+
+                <div>
+
+                    <small>High Priority</small>
+
+                    <strong id="highPlans">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ADD PLAN -->
+
+        <section class="add-section">
+
+            <div>
+
+                <small>NEW PLAN</small>
+
+                <h2>
+                    Schedule a study session
+                </h2>
+
+            </div>
+
+
+            <form id="plannerForm">
+
+                <div class="input-group">
+
+                    <label>
+                        Task
+                    </label>
+
+                    <select id="taskSelect" required>
+
+                        <option value="">
+                            Select a task
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dateInput"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="timeInput"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Priority
+                    </label>
+
+                    <select id="priorityInput">
+
+                        <option value="low">
+                            🟢 Low
+                        </option>
+
+                        <option value="medium" selected>
+                            🟡 Medium
+                        </option>
+
+                        <option value="high">
+                            🔴 High
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button type="submit">
+                    + Add to Planner
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- PLANNER -->
+
+        <section class="planner-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <small>YOUR SCHEDULE</small>
+
+                    <h2>
+                        Upcoming
+                    </h2>
+
+                </div>
+
+                <div class="filter-buttons">
+
+                    <button
+                        class="filter active"
+                        data-filter="all"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="pending"
+                    >
+                        Pending
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="completed"
+                    >
+                        Done
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="plansContainer"
+                class="plans-container"
+            >
+
+                <!-- Plans created by JS -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="planner.js"></script>
+
+</body>
+
+</html>
