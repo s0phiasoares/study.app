@@ -103,15 +103,7 @@ document.addEventListener("keydown", (event) => {
 
 modalStart.addEventListener("click", () => {
 
-    closeModalWindow();
-
-    // Future:
-    // Here we will redirect to the profile creation page.
-
-    alert(
-        "🚀 Your journey is about to begin!\n\n" +
-        "Next step: create your profile."
-    );
+    window.location.href = "profile.html";
 
 });
 
