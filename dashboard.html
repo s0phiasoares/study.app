@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Study Path</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+                🚀 <span>Study<span>Path</span></span>
+            </div>
+
+            <nav>
+
+                <a href="#" class="active">
+                    🏠
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#">
+                    🎯
+                    <span>My Goals</span>
+                </a>
+
+                <a href="#">
+                    📚
+                    <span>Study</span>
+                </a>
+
+                <a href="#">
+                    📅
+                    <span>Planner</span>
+                </a>
+
+                <a href="#">
+                    🗺️
+                    <span>My Path</span>
+                </a>
+
+                <a href="#">
+                    📊
+                    <span>Progress</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <button id="logoutButton">
+                    🚪 Log out
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="main">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div>
+                    <small>STUDY PATH</small>
+                    <h1>Dashboard</h1>
+                </div>
+
+                <div class="profile-mini">
+
+                    <div class="avatar" id="avatar">
+                        SP
+                    </div>
+
+                    <div>
+                        <strong id="userName">
+                            Student
+                        </strong>
+
+                        <small>
+                            Future Builder 🚀
+                        </small>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- WELCOME -->
+
+            <section class="welcome-card">
+
+                <div>
+
+                    <span>GOOD MORNING 👋</span>
+
+                    <h2>
+                        Keep building your future.
+                    </h2>
+
+                    <p>
+                        Every small step you take today
+                        brings you closer to your goal.
+                    </p>
+
+                </div>
+
+                <div class="rocket">
+                    🚀
+                </div>
+
+            </section>
+
+
+            <!-- GOAL -->
+
+            <section class="goal-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <small>YOUR MAIN GOAL</small>
+                        <h2 id="goalTitle">
+                            Your goal
+                        </h2>
+                    </div>
+
+                    <span class="goal-badge">
+                        🎯 Main Goal
+                    </span>
+
+                </div>
+
+
+                <div class="goal-content">
+
+                    <div class="goal-icon">
+                        🎓
+                    </div>
+
+                    <div class="goal-info">
+
+                        <h3 id="goalText">
+                            Your goal will appear here.
+                        </h3>
+
+                        <p>
+                            Area:
+                            <strong id="areaText">
+                                -
+                            </strong>
+                        </p>
+
+                        <p>
+                            Deadline:
+                            <strong id="deadlineText">
+                                -
+                            </strong>
+                        </p>
+
+                    </div>
+
+                    <div class="goal-progress">
+
+                        <strong>
+                            0%
+                        </strong>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+
+                        <small>
+                            Just getting started!
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STATS -->
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        📚
+                    </div>
+
+                    <div>
+                        <small>Study Time</small>
+                        <strong>0h</strong>
+                        <span>This week</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        🔥
+                    </div>
+
+                    <div>
+                        <small>Study Streak</small>
+                        <strong>0 days</strong>
+                        <span>Keep going!</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon cyan">
+                        ✅
+                    </div>
+
+                    <div>
+                        <small>Tasks</small>
+                        <strong>0 / 0</strong>
+                        <span>Completed</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon pink">
+                        ⭐
+                    </div>
+
+                    <div>
+                        <small>XP</small>
+                        <strong>0</strong>
+                        <span>Level 1</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PATH -->
+
+            <section class="path-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <small>YOUR JOURNEY</small>
+                        <h2>My Path</h2>
+                    </div>
+
+                    <button class="view-button">
+                        View path →
+                    </button>
+
+                </div>
+
+
+                <div class="path">
+
+                    <div class="path-item completed">
+
+                        <div class="path-circle">
+                            ✓
+                        </div>
+
+                        <div>
+                            <strong>Set your goal</strong>
+                            <small>You've completed this step.</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="path-connector"></div>
+
+
+                    <div class="path-item">
+
+                        <div class="path-circle">
+                            2
+                        </div>
+
+                        <div>
+                            <strong>Build your study plan</strong>
+                            <small>Create your first study routine.</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="path-connector"></div>
+
+
+                    <div class="path-item">
+
+                        <div class="path-circle">
+                            3
+                        </div>
+
+                        <div>
+                            <strong>Develop your skills</strong>
+                            <small>Learn and practice.</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="path-connector"></div>
+
+
+                    <div class="path-item">
+
+                        <div class="path-circle">
+                            4
+                        </div>
+
+                        <div>
+                            <strong>Build your future</strong>
+                            <small>Turn your knowledge into opportunities.</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- NEXT ACTION -->
+
+            <section class="next-section">
+
+                <div>
+
+                    <small>NEXT STEP</small>
+
+                    <h2>
+                        Start your first study session.
+                    </h2>
+
+                    <p>
+                        Create a study routine and take
+                        your first step toward your goal.
+                    </p>
+
+                </div>
+
+                <button id="studyButton">
+                    Start Studying →
+                </button>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>
