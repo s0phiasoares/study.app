@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Studies | Study Path</title>
+
+    <link rel="stylesheet" href="study.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+                🚀 <span>Study<span>Path</span></span>
+            </div>
+
+            <nav>
+
+                <a href="dashboard.html">
+                    🏠
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#">
+                    🎯
+                    <span>My Goals</span>
+                </a>
+
+                <a href="study.html" class="active">
+                    📚
+                    <span>Study</span>
+                </a>
+
+                <a href="#">
+                    📅
+                    <span>Planner</span>
+                </a>
+
+                <a href="#">
+                    🗺️
+                    <span>My Path</span>
+                </a>
+
+                <a href="#">
+                    📊
+                    <span>Progress</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <button id="logoutButton">
+                    🚪 Log out
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+
+                    <small>STUDY PATH</small>
+
+                    <h1>My Studies 📚</h1>
+
+                </div>
+
+                <div class="profile-mini">
+
+                    <div class="avatar" id="avatar">
+                        SP
+                    </div>
+
+                    <div>
+
+                        <strong id="userName">
+                            Student
+                        </strong>
+
+                        <small>
+                            Future Builder 🚀
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- STUDY HEADER -->
+
+            <section class="study-header">
+
+                <div>
+
+                    <span>KEEP LEARNING</span>
+
+                    <h2>
+                        Build your knowledge,
+                        <strong>one subject at a time.</strong>
+                    </h2>
+
+                    <p>
+                        Add your subjects and create tasks
+                        to organize your studies.
+                    </p>
+
+                </div>
+
+                <div class="book">
+                    📚
+                </div>
+
+            </section>
+
+
+            <!-- STATS -->
+
+            <section class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <small>Subjects</small>
+
+                        <strong id="subjectCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📝
+                    </div>
+
+                    <div>
+
+                        <small>Total Tasks</small>
+
+                        <strong id="taskCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <small>Completed</small>
+
+                        <strong id="completedCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🎯
+                    </div>
+
+                    <div>
+
+                        <small>Progress</small>
+
+                        <strong id="overallProgress">
+                            0%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ADD SUBJECT -->
+
+            <section class="add-section">
+
+                <div>
+
+                    <small>NEW SUBJECT</small>
+
+                    <h2>
+                        Add a subject
+                    </h2>
+
+                </div>
+
+                <form id="subjectForm">
+
+                    <input
+                        type="text"
+                        id="subjectInput"
+                        placeholder="Ex: Mathematics"
+                        required
+                    >
+
+                    <button type="submit">
+                        + Add Subject
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- SUBJECTS -->
+
+            <section class="subjects-section">
+
+                <div class="section-title">
+
+                    <div>
+
+                        <small>YOUR SUBJECTS</small>
+
+                        <h2>
+                            Study List
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="subjectsContainer"
+                    class="subjects-container"
+                >
+
+                    <!-- Subjects created by JS -->
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- TASK MODAL -->
+
+    <div
+        class="modal-overlay"
+        id="taskModal"
+    >
+
+        <div class="modal">
+
+            <button
+                class="close-modal"
+                id="closeModal"
+            >
+                ×
+            </button>
+
+            <div class="modal-icon">
+                📝
+            </div>
+
+            <h2>
+                Add a Task
+            </h2>
+
+            <p id="modalSubjectName">
+                Subject
+            </p>
+
+            <form id="taskForm">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Ex: Study chapter 3"
+                    required
+                >
+
+                <button type="submit">
+                    Add Task
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="study.js"></script>
+
+</body>
+
+</html>

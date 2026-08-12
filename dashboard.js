@@ -132,11 +132,7 @@ logoutButton.addEventListener("click", () => {
 
 studyButton.addEventListener("click", () => {
 
-    alert(
-        "📚 Study section coming next!\n\n" +
-        "Here you'll be able to create subjects, " +
-        "tasks and study sessions."
-    );
+    window.location.href = "study.html";
 
 });
 
