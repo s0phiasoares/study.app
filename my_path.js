@@ -1,28 +1,25 @@
 // ==========================================
-// STUDY PATH - MY PATH
+// STUDYPATH - MY PATH
 // ==========================================
 
 
-// ================================
+// ==========================================
 // USER
-// ================================
+// ==========================================
 
 const savedUser =
     localStorage.getItem("studyPathUser");
 
 if (!savedUser) {
-
     window.location.href = "profile.html";
-
 }
 
-const user =
-    JSON.parse(savedUser);
+const user = JSON.parse(savedUser);
 
 
-// ================================
+// ==========================================
 // ELEMENTS
-// ================================
+// ==========================================
 
 const userName =
     document.getElementById("userName");
@@ -67,41 +64,31 @@ const modalTitle =
     document.getElementById("modalTitle");
 
 const modalDescription =
-    document.getElementById(
-        "modalDescription"
-    );
+    document.getElementById("modalDescription");
 
 const modalPercent =
-    document.getElementById(
-        "modalPercent"
-    );
+    document.getElementById("modalPercent");
 
 const modalFill =
-    document.getElementById(
-        "modalFill"
-    );
+    document.getElementById("modalFill");
 
 const modalTasks =
-    document.getElementById(
-        "modalTasks"
-    );
+    document.getElementById("modalTasks");
 
 const modalAction =
-    document.getElementById(
-        "modalAction"
-    );
+    document.getElementById("modalAction");
 
 
-// ================================
+// ==========================================
 // USER DATA
-// ================================
+// ==========================================
 
 userName.textContent =
-    user.name;
+    user.name || "Student";
 
 
 avatar.textContent =
-    user.name
+    (user.name || "Student")
         .split(" ")
         .map(word => word[0])
         .join("")
@@ -113,9 +100,9 @@ goalText.textContent =
     user.goal || "Build my future";
 
 
-// ================================
-// STUDY DATA
-// ================================
+// ==========================================
+// SUBJECTS
+// ==========================================
 
 let subjects =
     JSON.parse(
@@ -125,9 +112,9 @@ let subjects =
     ) || [];
 
 
-// ================================
+// ==========================================
 // PATH DATA
-// ================================
+// ==========================================
 
 const pathSteps = [
 
@@ -142,7 +129,6 @@ const pathSteps = [
             "Choose where you want your future to take you.",
 
         requirement: 0
-
     },
 
     {
@@ -156,7 +142,6 @@ const pathSteps = [
             "Build the knowledge you need to reach your goal.",
 
         requirement: 20
-
     },
 
     {
@@ -170,7 +155,6 @@ const pathSteps = [
             "Turn what you learn into real skills.",
 
         requirement: 40
-
     },
 
     {
@@ -184,7 +168,6 @@ const pathSteps = [
             "Use your skills to create real projects.",
 
         requirement: 60
-
     },
 
     {
@@ -198,250 +181,103 @@ const pathSteps = [
             "Reach an important milestone on your journey.",
 
         requirement: 80
-
     }
 
 ];
 
 
-// ================================
-// CALCULATE STUDY PROGRESS
-// ================================
+// ==========================================
+// STUDY PROGRESS
+// ==========================================
 
 function getStudyProgress() {
 
     let total = 0;
-
     let completed = 0;
-
 
     subjects.forEach(subject => {
 
-        total +=
-            subject.tasks.length;
+        const tasks =
+            Array.isArray(subject.tasks)
+                ? subject.tasks
+                : [];
 
+        total += tasks.length;
 
         completed +=
-            subject.tasks.filter(
-                task =>
-                    task.completed
+            tasks.filter(
+                task => task.completed
             ).length;
 
     });
 
-
     if (total === 0) {
-
         return 0;
-
     }
-
 
     return Math.round(
         (completed / total) * 100
     );
-
 }
 
 
-// ================================
-// GET ALL TASKS
-// ================================
+// ==========================================
+// ALL TASKS
+// ==========================================
 
 function getAllTasks() {
 
     const tasks = [];
 
-
     subjects.forEach(subject => {
 
-        subject.tasks.forEach(task => {
+        const subjectTasks =
+            Array.isArray(subject.tasks)
+                ? subject.tasks
+                : [];
+
+        subjectTasks.forEach(task => {
 
             tasks.push({
-
                 ...task,
-
-                subjectName:
-                    subject.name
-
+                subjectName: subject.name
             });
 
         });
 
     });
 
-
     return tasks;
-
 }
 
 
-// ================================
+// ==========================================
 // STEP STATE
-// ================================
+// ==========================================
 
-function getStepState(
-    step,
-    progress
-) {
+function getStepState(step, progress) {
 
     if (
         progress >=
         step.requirement + 20
     ) {
-
         return "completed";
-
     }
-
 
     if (
         progress >=
         step.requirement
     ) {
-
         return "active";
-
     }
 
-
     return "locked";
-
 }
 
 
-// ================================
-// RENDER PATH
-// ================================
-
-function renderPath() {
-
-    path.innerHTML = "";
-
-
-    const progress =
-        getStudyProgress();
-
-
-    pathSteps.forEach(
-        (step, index) => {
-
-            const state =
-                getStepState(
-                    step,
-                    progress
-                );
-
-
-            const stepElement =
-                document.createElement(
-                    "div"
-                );
-
-
-            stepElement.className =
-                `path-step ${state}`;
-
-
-            stepElement.dataset.id =
-                step.id;
-
-
-            const stepProgress =
-                calculateStepProgress(
-                    step,
-                    progress
-                );
-
-
-            stepElement.innerHTML = `
-
-                <div
-                    class="node"
-                    title="Open step"
-                >
-
-                    ${
-                        state === "completed"
-                            ? "✓"
-                            : state === "locked"
-                                ? "🔒"
-                                : step.icon
-                    }
-
-                </div>
-
-
-                <div class="path-card">
-
-                    <div class="card-top">
-
-                        <div class="card-icon">
-                            ${step.icon}
-                        </div>
-
-                        <div class="card-info">
-
-                            <small>
-                                STEP 0${step.id}
-                            </small>
-
-                            <h3>
-                                ${step.title}
-                            </h3>
-
-                        </div>
-
-                    </div>
-
-
-                    <p>
-                        ${step.description}
-                    </p>
-
-
-                    <div class="mini-progress">
-
-                        <div
-                            class="mini-progress-fill"
-                            style="
-                                width:${stepProgress}%
-                            "
-                        ></div>
-
-                    </div>
-
-                </div>
-
-            `;
-
-
-            stepElement.addEventListener(
-                "click",
-                () => {
-
-                    openStep(step);
-
-                }
-            );
-
-
-            path.appendChild(
-                stepElement
-            );
-
-        }
-    );
-
-
-    updatePathLine();
-
-}
-
-
-// ================================
+// ==========================================
 // STEP PROGRESS
-// ================================
+// ==========================================
 
 function calculateStepProgress(
     step,
@@ -451,49 +287,187 @@ function calculateStepProgress(
     const start =
         step.requirement;
 
-
     const end =
         step.requirement + 20;
 
-
     if (globalProgress >= end) {
-
         return 100;
-
     }
-
 
     if (globalProgress <= start) {
-
         return 0;
-
     }
-
 
     return Math.round(
         (
-            (globalProgress - start)
-            /
+            (globalProgress - start) /
             (end - start)
         ) * 100
     );
-
 }
 
 
-// ================================
+// ==========================================
+// STATUS TEXT
+// ==========================================
+
+function getStatusText(state) {
+
+    if (state === "completed") {
+        return "COMPLETED";
+    }
+
+    if (state === "active") {
+        return "CURRENT STAGE";
+    }
+
+    return "LOCKED";
+}
+
+
+// ==========================================
+// RENDER PATH
+// ==========================================
+
+function renderPath() {
+
+    path.innerHTML = "";
+
+    const progress =
+        getStudyProgress();
+
+    pathSteps.forEach(step => {
+
+        const state =
+            getStepState(
+                step,
+                progress
+            );
+
+        const stepProgress =
+            calculateStepProgress(
+                step,
+                progress
+            );
+
+        const stepElement =
+            document.createElement("div");
+
+        stepElement.className =
+            `path-step ${state}`;
+
+        stepElement.dataset.id =
+            step.id;
+
+
+        const nodeIcon =
+            state === "completed"
+                ? "✓"
+                : state === "locked"
+                    ? "🔒"
+                    : step.icon;
+
+
+        stepElement.innerHTML = `
+
+            <div
+                class="node"
+                title="Open ${escapeHTML(step.title)}"
+            >
+                ${nodeIcon}
+            </div>
+
+
+            <div class="path-card">
+
+                <div class="card-top">
+
+                    <div class="card-icon">
+                        ${step.icon}
+                    </div>
+
+                    <div class="card-info">
+
+                        <small>
+                            STEP 0${step.id}
+                        </small>
+
+                        <h3>
+                            ${escapeHTML(step.title)}
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <p>
+                    ${escapeHTML(step.description)}
+                </p>
+
+
+                <div class="mini-progress-wrapper">
+
+                    <div class="mini-progress">
+
+                        <div
+                            class="mini-progress-fill"
+                            style="width:${stepProgress}%"
+                        ></div>
+
+                    </div>
+
+                    <span class="mini-percent">
+                        ${stepProgress}%
+                    </span>
+
+                </div>
+
+
+                <div class="card-status">
+
+                    <span class="status-dot"></span>
+
+                    ${getStatusText(state)}
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        stepElement.addEventListener(
+            "click",
+            () => openStep(step)
+        );
+
+
+        path.appendChild(stepElement);
+
+    });
+
+
+    requestAnimationFrame(
+        updatePathLine
+    );
+}
+
+
+// ==========================================
 // PATH LINE
-// ================================
+// ==========================================
 
 function updatePathLine() {
 
     const progress =
         getStudyProgress();
 
-
     const totalHeight =
-        path.offsetHeight;
-
+        Math.max(
+            path.offsetHeight - 80,
+            0
+        );
 
     const percentage =
         Math.min(
@@ -501,18 +475,16 @@ function updatePathLine() {
             1
         );
 
-
     path.style.setProperty(
         "--path-height",
         `${totalHeight * percentage}px`
     );
-
 }
 
 
-// ================================
+// ==========================================
 // MAIN PROGRESS
-// ================================
+// ==========================================
 
 function updateProgress() {
 
@@ -533,62 +505,48 @@ function updateProgress() {
         progressMessage.textContent =
             "Your journey starts with your first task. 🚀";
 
-    }
-
-    else if (progress < 20) {
+    } else if (progress < 20) {
 
         progressMessage.textContent =
             "Great start! Keep going. 🌱";
 
-    }
-
-    else if (progress < 40) {
+    } else if (progress < 40) {
 
         progressMessage.textContent =
             "You're learning and growing! 📚";
 
-    }
-
-    else if (progress < 60) {
+    } else if (progress < 60) {
 
         progressMessage.textContent =
             "Your skills are taking shape! 💻";
 
-    }
-
-    else if (progress < 80) {
+    } else if (progress < 80) {
 
         progressMessage.textContent =
             "You're becoming a creator! 🛠️";
 
-    }
-
-    else if (progress < 100) {
+    } else if (progress < 100) {
 
         progressMessage.textContent =
             "The finish line is getting closer! 🏆";
 
-    }
-
-    else {
+    } else {
 
         progressMessage.textContent =
             "You completed your path! 🚀🏆";
 
     }
-
 }
 
 
-// ================================
+// ==========================================
 // OPEN STEP
-// ================================
+// ==========================================
 
 function openStep(step) {
 
     const progress =
         getStudyProgress();
-
 
     const state =
         getStepState(
@@ -602,21 +560,17 @@ function openStep(step) {
         showLockedMessage(step);
 
         return;
-
     }
 
 
     modalIcon.textContent =
         step.icon;
 
-
     modalStep.textContent =
         `STEP 0${step.id}`;
 
-
     modalTitle.textContent =
         step.title;
-
 
     modalDescription.textContent =
         step.description;
@@ -631,7 +585,6 @@ function openStep(step) {
 
     modalPercent.textContent =
         `${stepProgress}%`;
-
 
     modalFill.style.width =
         `${stepProgress}%`;
@@ -649,46 +602,41 @@ function openStep(step) {
 
             closeStepModal();
 
-            if (step.id === 2) {
+
+            if (
+                step.id === 2 ||
+                step.id === 3
+            ) {
 
                 window.location.href =
                     "study.html";
 
-            }
-
-            else if (step.id === 3) {
-
-                window.location.href =
-                    "study.html";
-
-            }
-
-            else if (step.id === 4) {
+            } else if (step.id === 4) {
 
                 window.location.href =
                     "dashboard.html";
 
+            } else if (step.id === 1) {
+
+                window.location.href =
+                    "profile.html";
             }
 
         };
 
 
-    stepModal.classList.add(
-        "show"
-    );
-
+    stepModal.classList.add("show");
 }
 
 
-// ================================
+// ==========================================
 // MODAL TASKS
-// ================================
+// ==========================================
 
 function renderModalTasks(step) {
 
     const tasks =
         getAllTasks();
-
 
     modalTasks.innerHTML = "";
 
@@ -699,7 +647,7 @@ function renderModalTasks(step) {
 
             <div class="modal-task">
 
-                📚
+                <span>📚</span>
 
                 <span>
                     Create tasks in Study
@@ -711,52 +659,39 @@ function renderModalTasks(step) {
         `;
 
         return;
-
     }
 
 
     let selectedTasks = [];
 
 
-    if (step.id === 2) {
+    if (
+        step.id === 2 ||
+        step.id === 3
+    ) {
 
         selectedTasks =
             tasks.slice(0, 4);
 
-    }
-
-    else if (step.id === 3) {
-
-        selectedTasks =
-            tasks.slice(0, 4);
-
-    }
-
-    else if (step.id === 4) {
+    } else if (step.id === 4) {
 
         selectedTasks =
             tasks.filter(
                 task =>
                     task.completed
-            );
+            ).slice(0, 4);
 
-    }
-
-    else {
+    } else {
 
         selectedTasks =
             tasks.slice(0, 4);
-
     }
 
 
     selectedTasks.forEach(task => {
 
         const item =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         item.className =
             `modal-task ${
@@ -769,13 +704,11 @@ function renderModalTasks(step) {
         item.innerHTML = `
 
             <span>
-
                 ${
                     task.completed
                         ? "✅"
-                        : "⬜"
+                        : "○"
                 }
-
             </span>
 
             <span>
@@ -787,75 +720,58 @@ function renderModalTasks(step) {
         `;
 
 
-        modalTasks.appendChild(
-            item
-        );
+        modalTasks.appendChild(item);
 
     });
-
 }
 
 
-// ================================
+// ==========================================
 // ACTION TEXT
-// ================================
+// ==========================================
 
 function getActionText(step) {
 
     if (step.id === 1) {
-
         return "🎯 View My Goal";
-
     }
 
     if (step.id === 2) {
-
         return "📚 Go to Study";
-
     }
 
     if (step.id === 3) {
-
-        return "💻 Practice";
-
+        return "💻 Start Practicing";
     }
 
     if (step.id === 4) {
-
         return "🛠️ Build Something";
-
     }
 
     return "🏆 Keep Going";
-
 }
 
 
-// ================================
-// LOCKED
-// ================================
+// ==========================================
+// LOCKED STEP
+// ==========================================
 
 function showLockedMessage(step) {
 
     modalIcon.textContent =
         "🔒";
 
-
     modalStep.textContent =
         `STEP 0${step.id}`;
-
 
     modalTitle.textContent =
         `${step.title} is locked`;
 
-
     modalDescription.textContent =
-        `Complete more study tasks to unlock this part of your journey.`;
-
+        "Complete more study tasks to unlock this part of your journey.";
 
     modalPercent.textContent =
-        "Locked";
-
+        "LOCKED";
 
     modalFill.style.width =
         "0%";
@@ -865,7 +781,7 @@ function showLockedMessage(step) {
 
         <div class="modal-task">
 
-            🔐
+            <span>🔐</span>
 
             <span>
                 Keep completing your tasks
@@ -890,23 +806,17 @@ function showLockedMessage(step) {
         };
 
 
-    stepModal.classList.add(
-        "show"
-    );
-
+    stepModal.classList.add("show");
 }
 
 
-// ================================
+// ==========================================
 // CLOSE MODAL
-// ================================
+// ==========================================
 
 function closeStepModal() {
 
-    stepModal.classList.remove(
-        "show"
-    );
-
+    stepModal.classList.remove("show");
 }
 
 
@@ -933,30 +843,37 @@ stepModal.addEventListener(
 );
 
 
-// ================================
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Escape") {
+            closeStepModal();
+        }
+
+    }
+);
+
+
+// ==========================================
 // SECURITY
-// ================================
+// ==========================================
 
 function escapeHTML(text) {
 
     const div =
-        document.createElement(
-            "div"
-        );
-
+        document.createElement("div");
 
     div.textContent =
-        text;
-
+        text ?? "";
 
     return div.innerHTML;
-
 }
 
 
-// ================================
+// ==========================================
 // LOGOUT
-// ================================
+// ==========================================
 
 logoutButton.addEventListener(
     "click",
@@ -974,19 +891,17 @@ logoutButton.addEventListener(
                 "studyPathUser"
             );
 
-
             window.location.href =
                 "index.html";
-
         }
 
     }
 );
 
 
-// ================================
-// UPDATE
-// ================================
+// ==========================================
+// UPDATE EVERYTHING
+// ==========================================
 
 function updateEverything() {
 
@@ -997,12 +912,9 @@ function updateEverything() {
 }
 
 
-updateEverything();
-
-
-// ================================
-// LISTEN FOR CHANGES
-// ================================
+// ==========================================
+// STORAGE LISTENER
+// ==========================================
 
 window.addEventListener(
     "storage",
@@ -1018,23 +930,21 @@ window.addEventListener(
                     event.newValue
                 ) || [];
 
-
             updateEverything();
-
         }
 
     }
 );
 
 
-// ================================
+// ==========================================
 // AUTO UPDATE
-// ================================
+// ==========================================
 
 setInterval(
     () => {
 
-        subjects =
+        const newSubjects =
             JSON.parse(
                 localStorage.getItem(
                     "studyPathSubjects"
@@ -1042,13 +952,28 @@ setInterval(
             ) || [];
 
 
-        updateEverything();
+        if (
+            JSON.stringify(newSubjects) !==
+            JSON.stringify(subjects)
+        ) {
+
+            subjects =
+                newSubjects;
+
+            updateEverything();
+        }
 
     },
     3000
 );
 
 
+// ==========================================
+// START
+// ==========================================
+
+updateEverything();
+
 console.log(
-    "🗺️ Dynamic My Path loaded!"
+    "🚀 StudyPath - My Path redesigned successfully!"
 );

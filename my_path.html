@@ -2,21 +2,12 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>StudyPath | My Path</title>
 
-    <title>My Path | Study Path</title>
-
-    <link
-        rel="stylesheet"
-        href="my-path.css"
-    >
-
+    <link rel="stylesheet" href="my_path.css">
 </head>
 
 <body>
@@ -24,57 +15,73 @@
 <div class="app">
 
     <!-- SIDEBAR -->
-
     <aside class="sidebar">
 
         <div class="brand">
-            🚀
-            <span>
-                Study<span>Path</span>
-            </span>
+            <div class="brand-logo">🚀</div>
+
+            <div class="brand-text">
+                <strong>Study<span>Path</span></strong>
+                <small>Build your future</small>
+            </div>
+        </div>
+
+        <div class="menu-label">
+            MAIN MENU
         </div>
 
         <nav>
 
             <a href="dashboard.html">
-                🏠
+                <span class="nav-icon">⌂</span>
                 <span>Dashboard</span>
             </a>
 
             <a href="#">
-                🎯
+                <span class="nav-icon">◎</span>
                 <span>My Goals</span>
             </a>
 
             <a href="study.html">
-                📚
+                <span class="nav-icon">▣</span>
                 <span>Study</span>
             </a>
 
             <a href="planner.html">
-                📅
+                <span class="nav-icon">▦</span>
                 <span>Planner</span>
             </a>
 
-            <a
-                href="my-path.html"
-                class="active"
-            >
-                🗺️
+            <a href="my-path.html" class="active">
+                <span class="nav-icon">◈</span>
                 <span>My Path</span>
             </a>
 
             <a href="#">
-                📊
+                <span class="nav-icon">◒</span>
                 <span>Progress</span>
             </a>
 
         </nav>
 
-        <div class="sidebar-bottom">
+        <div class="sidebar-footer">
+
+            <div class="journey-mini">
+
+                <div class="mini-status">
+                    <span></span>
+                    JOURNEY ACTIVE
+                </div>
+
+                <p>
+                    Keep moving forward.
+                </p>
+
+            </div>
 
             <button id="logoutButton">
-                🚪 Log out
+                <span>↪</span>
+                Log out
             </button>
 
         </div>
@@ -83,36 +90,32 @@
 
 
     <!-- MAIN -->
-
     <main class="main">
 
-        <!-- HEADER -->
-
+        <!-- TOPBAR -->
         <header class="topbar">
 
-            <div>
+            <div class="page-heading">
 
-                <small>
-                    YOUR JOURNEY
-                </small>
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    YOUR PERSONAL JOURNEY
+                </div>
 
                 <h1>
-                    My Path 🗺️
+                    My <span>Path</span>
                 </h1>
+
+                <p>
+                    Build your future, one step at a time.
+                </p>
 
             </div>
 
 
             <div class="profile-mini">
 
-                <div
-                    class="avatar"
-                    id="avatar"
-                >
-                    SP
-                </div>
-
-                <div>
+                <div class="profile-info">
 
                     <strong id="userName">
                         Student
@@ -124,148 +127,257 @@
 
                 </div>
 
+                <div class="avatar" id="avatar">
+                    SP
+                </div>
+
             </div>
 
         </header>
 
 
-        <!-- HERO -->
+        <!-- JOURNEY STATUS -->
+        <section class="journey-status">
 
-        <section class="hero">
+            <div class="status-left">
 
-            <div>
+                <div class="status-icon">
+                    ✦
+                </div>
 
-                <span>
-                    YOUR FUTURE JOURNEY
-                </span>
+                <div>
 
-                <h2>
-                    Your future isn't a destination.
+                    <span>
+                        JOURNEY STATUS
+                    </span>
+
                     <strong>
-                        It's a path.
+                        You're building something great.
                     </strong>
-                </h2>
 
-                <p>
-                    Every task you complete takes
-                    you one step closer.
-                </p>
+                </div>
 
             </div>
 
-            <div class="hero-rocket">
-                🚀
+            <div class="status-badge">
+                <span></span>
+                IN PROGRESS
             </div>
 
         </section>
 
 
-        <!-- GOAL -->
+        <!-- HERO -->
+        <section class="hero">
 
-        <section class="goal-card">
+            <div class="hero-content">
 
-            <div class="goal-icon">
-                🎯
+                <div class="hero-tag">
+                    YOUR FUTURE JOURNEY
+                </div>
+
+                <h2>
+                    Your future isn't a destination.
+                    <span>It's a path.</span>
+                </h2>
+
+                <p>
+                    Every task you complete, every skill you learn
+                    and every project you create takes you one
+                    step closer to where you want to be.
+                </p>
+
+                <div class="hero-points">
+
+                    <div>
+                        <span>✦</span>
+                        Learn
+                    </div>
+
+                    <div>
+                        <span>✦</span>
+                        Practice
+                    </div>
+
+                    <div>
+                        <span>✦</span>
+                        Create
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="goal-content">
+            <div class="hero-visual">
 
-                <small>
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+
+                <div class="planet">
+                    🚀
+                </div>
+
+                <div class="floating-star star-one">✦</div>
+                <div class="floating-star star-two">✧</div>
+                <div class="floating-star star-three">✦</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- GOAL + PROGRESS -->
+        <section class="overview-grid">
+
+            <!-- GOAL -->
+            <div class="goal-card">
+
+                <div class="card-label">
+                    <span>🎯</span>
                     MY MAIN GOAL
-                </small>
+                </div>
 
                 <h2 id="goalText">
                     Loading...
                 </h2>
 
                 <p>
-                    This is the destination
-                    you're building towards.
+                    This is the destination you're
+                    building towards.
+                </p>
+
+                <div class="goal-line"></div>
+
+                <span class="goal-footer">
+                    Keep your goal in sight.
+                </span>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+            <div class="progress-card">
+
+                <div class="progress-header">
+
+                    <div>
+
+                        <div class="card-label">
+                            <span>◔</span>
+                            PATH PROGRESS
+                        </div>
+
+                        <h2>
+                            Keep moving forward.
+                        </h2>
+
+                    </div>
+
+                    <div
+                        id="progressNumber"
+                        class="progress-number"
+                    >
+                        0%
+                    </div>
+
+                </div>
+
+
+                <div class="progress-track">
+
+                    <div
+                        id="progressFill"
+                        class="progress-fill"
+                    ></div>
+
+                </div>
+
+
+                <div class="progress-bottom">
+
+                    <p id="progressMessage">
+                        Your journey starts here.
+                    </p>
+
+                    <span>
+                        🚀 Keep going
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PATH HEADER -->
+        <section class="path-header">
+
+            <div>
+
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    YOUR ROADMAP
+                </div>
+
+                <h2>
+                    The Path to Your Future
+                </h2>
+
+                <p>
+                    Follow each stage and turn your goals
+                    into real progress.
+                </p>
+
+            </div>
+
+            <div class="path-counter">
+                <strong>05</strong>
+                <span>STAGES</span>
+            </div>
+
+        </section>
+
+
+        <!-- PATH -->
+        <section
+            id="path"
+            class="path"
+        ></section>
+
+
+        <!-- FINAL MESSAGE -->
+        <section class="final-card">
+
+            <div class="final-icon">
+                ✦
+            </div>
+
+            <div>
+
+                <span>
+                    REMEMBER
+                </span>
+
+                <h3>
+                    Big futures are built through small steps.
+                </h3>
+
+                <p>
+                    You don't need to have everything figured out.
+                    You just need to keep moving.
                 </p>
 
             </div>
 
         </section>
 
-
-        <!-- PROGRESS -->
-
-        <section class="progress-card">
-
-            <div class="progress-top">
-
-                <div>
-
-                    <small>
-                        PATH PROGRESS
-                    </small>
-
-                    <h2>
-                        Keep moving forward 🚀
-                    </h2>
-
-                </div>
-
-                <div
-                    id="progressNumber"
-                    class="progress-number"
-                >
-                    0%
-                </div>
-
-            </div>
-
-
-            <div class="progress-bar">
-
-                <div
-                    id="progressFill"
-                    class="progress-fill"
-                ></div>
-
-            </div>
-
-            <p id="progressMessage">
-                Start your journey.
-            </p>
-
-        </section>
-
-
-        <!-- PATH -->
-
-        <section class="path-section">
-
-            <div class="section-title">
-
-                <small>
-                    YOUR ROADMAP
-                </small>
-
-                <h2>
-                    The Path to Your Future
-                </h2>
-
-            </div>
-
-
-            <!-- JAVASCRIPT WILL CREATE THE PATH HERE -->
-
-            <div
-                id="path"
-                class="path"
-            ></div>
-
-        </section>
-
-
     </main>
 
 </div>
 
 
-<!-- STEP MODAL -->
-
+<!-- MODAL -->
 <div
     id="stepModal"
     class="modal-overlay"
@@ -280,22 +392,35 @@
             ×
         </button>
 
-        <div
-            id="modalIcon"
-            class="modal-icon"
-        >
-            📚
+
+        <div class="modal-top">
+
+            <div
+                id="modalIcon"
+                class="modal-icon"
+            >
+                📚
+            </div>
+
+            <div>
+
+                <small id="modalStep">
+                    STEP 01
+                </small>
+
+                <h2 id="modalTitle">
+                    Learn
+                </h2>
+
+            </div>
+
         </div>
 
-        <small id="modalStep">
-            STEP
-        </small>
 
-        <h2 id="modalTitle">
-            Learn
-        </h2>
-
-        <p id="modalDescription">
+        <p
+            id="modalDescription"
+            class="modal-description"
+        >
             Description
         </p>
 
@@ -305,7 +430,7 @@
             <div class="modal-progress-top">
 
                 <span>
-                    Progress
+                    STEP PROGRESS
                 </span>
 
                 <strong id="modalPercent">
@@ -331,6 +456,7 @@
             class="modal-tasks"
         ></div>
 
+
         <button
             id="modalAction"
             class="modal-action"
@@ -343,8 +469,7 @@
 </div>
 
 
-<script src="my-path.js"></script>
+<script src="my_path.js"></script>
 
 </body>
-
 </html>
