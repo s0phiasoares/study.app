@@ -697,7 +697,7 @@ logoutButton.addEventListener(
             );
 
             window.location.href =
-                "index.html";
+                "../index.html";
 
         }
 

@@ -103,7 +103,7 @@ document.addEventListener("keydown", (event) => {
 
 modalStart.addEventListener("click", () => {
 
-    window.location.href = "profile.html";
+    window.location.href = "pages/profile.html";
 
 });
 

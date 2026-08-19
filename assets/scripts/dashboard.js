@@ -119,7 +119,7 @@ logoutButton.addEventListener("click", () => {
 
         localStorage.removeItem("studyPathUser");
 
-        window.location.href = "index.html";
+        window.location.href = "../index.html";
 
     }
 
