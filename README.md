@@ -256,9 +256,9 @@ Este projeto está sendo desenvolvido como uma forma prática de estudar e aplic
 
 ---
 
-## 👩‍💻 Autora
+## Autora 💻👩🏽‍💻
 
-**Sophia Soares**
+**Sophia Soares Barbosa**
 
 Estudante de programação interessada em **Data Science, Python, desenvolvimento web e cibersegurança**.
 
