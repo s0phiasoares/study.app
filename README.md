@@ -23,6 +23,8 @@
 
 A proposta é transformar uma meta de longo prazo em pequenas ações diárias, permitindo que o estudante acompanhe sua evolução de forma simples e organizada.
 
+link do projeto : https://s0phiasoares.github.io/study.app/
+
 ### 🎯 Objetivo
 
 > **Planejar melhor. Estudar com propósito. Acompanhar a evolução.**
